@@ -38,13 +38,34 @@
 
 <body>
   
-   <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="preloader">
+    <div class="pl">
+      <div class="pl__bubble">
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+      </div>
+      <div class="pl__bubble">
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+      </div>
+      <div class="pl__bubble">
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
+        <div class="pl__bubble-drop"></div>
       </div>
     </div>
   </div>
@@ -166,6 +187,18 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      
+      if (preloader) {
+        preloader.classList.add('fade-out');
+        
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 1500); // Correspond à la durée de la transition
+      }
+    });
+  </script>
   </body>
 </html>

@@ -3495,3 +3495,60 @@ $(document).ready(function(){
     })
   })
 
+  document.querySelector('.bannerContainer').addEventListener('click', function(event) {
+	// Vérifie si le clic est dans la zone où se trouve la goutte
+	const bannerRect = event.currentTarget.getBoundingClientRect();
+	const clickX = event.clientX;
+	const clickY = event.clientY;
+  
+	// Définit les coordonnées de la goutte basée sur la position et la taille du pseudo-élément
+	const dropWidth = 86; // largeur de la goutte
+	const dropHeight = 200; // hauteur de la goutte
+	const dropBottomOffset = 50; // décalage vers le bas
+	const dropLeftOffset = bannerRect.left + (bannerRect.width / 2) - (dropWidth / 2); // position centrée
+  
+	// Vérifie si le clic est dans la zone de la goutte
+	if (
+	  clickX >= dropLeftOffset &&
+	  clickX <= dropLeftOffset + dropWidth &&
+	  clickY >= bannerRect.bottom + dropBottomOffset - dropHeight &&
+	  clickY <= bannerRect.bottom + dropBottomOffset
+	) {
+	  // Scrolle vers le bandeau "Votre propreté, c'est notre priorité !"
+	  const targetElement = document.getElementById('slogan-section');
+	  
+	  // Calcule la position d'affichage du bandeau, en tenant compte de sa hauteur
+	  const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+  
+	  // Compense la hauteur de la bannière plus un offset supplémentaire (par exemple, 20px)
+	  const bannerHeight = document.querySelector('.bannerContainer').offsetHeight;
+	  const additionalOffset = -400; // Ajuste cette valeur si nécessaire
+	  const adjustedPosition = targetPosition - bannerHeight - additionalOffset;
+  
+	  // Scrolling vers la position ajustée
+	  window.scrollTo({
+		top: adjustedPosition,
+		behavior: 'smooth'
+	  });
+	}
+  });
+  
+  
+  
+
+ 
+  document.addEventListener("DOMContentLoaded", function() {
+    const preloader = document.querySelector('.preloader');
+
+    // Attendre 2 secondes (durée de l'animation) avant de masquer le préchargeur
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+
+      // Optionnel : Retirer complètement le préchargeur après la transition
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 600); // Correspond à la durée de la transition CSS (0.5s)
+    }, 1000); // Durée de l'animation des bulles (ajuste selon ton besoin)
+  });
+
+

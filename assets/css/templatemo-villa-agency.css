@@ -17,6 +17,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   --accent-color: #1f3753;
   --light-color: #76d0f5;
   --dark-color: #252e3b;
+  --hue: 223;
+	--trans-dur: 0.3s;
 }
 
 .clearfix:after {
@@ -183,73 +185,196 @@ Global Styles
 /* ---------------------------------------------
 Pre-loader Style
 --------------------------------------------- */
-.js-preloader {
+/* Conteneur du preloader */
+/* Styles du preloader */
+
+.preloader {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.99);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-  visibility: visible;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
   z-index: 9999;
-  transition: opacity 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity 1.5s ease-out, visibility 0s 1.5s; /* Durée de l'animation et délai pour visibility */
 }
 
-.js-preloader.loaded {
+/* Classe ajoutée pour déclencher l'animation de disparition */
+.preloader.fade-out {
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  visibility: hidden; /* visibility passe à "hidden" après la transition d'opacité */
+  transition: all 2s;
 }
 
-.preloader-inner {
+#preloader {
+  width: 12em;
+  height: 12em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  width: 142px;
-  height: 40px;
-  background: transparent;
 }
 
-.preloader-inner .dot {
+.pl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  filter: drop-shadow(0.9em 0.9em 4px hsla(0, 0%, 0%, 0.4));
+  margin: auto;
+  width: 12em;
+  height: 12em;
+}
+
+.pl__bubble {
+  position: relative;
+  width: 3em;
+  height: 3em;
+}
+
+.pl__bubble-drop {
+  width: 0.125em;
+  height: 0.5em;
+  transform: translate(-50%, -3em);
   position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 12px;
-  left: 15px;
-  background: #0848a1;
+  transform-origin: 50% 0;
+}
+
+.pl__bubble:before,
+.pl__bubble:after,
+.pl__bubble-drop {
+  position: absolute;
+}
+
+.pl__bubble:before,
+.pl__bubble:after,
+.pl__bubble-drop:before {
+  animation: bubble-rise-before 1.5s linear infinite;
+}
+
+.pl__bubble:before,
+.pl__bubble:after {
   border-radius: 50%;
-  animation: dot 2.8s infinite;
 }
 
-.preloader-inner .dots {
-  margin-top: 12px;
-  margin-left: 31px;
-  animation: dots 2.8s infinite;
+.pl__bubble:after,
+.pl__bubble-drop {
+  top: 50%;
+  left: 50%;
 }
 
-.preloader-inner .dots span {
+.pl__bubble:before {
+  box-shadow: 0 -0.0625em 0 0.0625em hsl(223, 90%, 90%) inset, 
+              0 0 0 0.0625em hsl(223, 90%, 70%) inset, 
+              0 0 0.25em 0.25em hsla(223, 90%, 70%, 0.7) inset;
+  transform: translate(0, 4.5em) scale(0);
+}
+
+.pl__bubble:after {
+  animation-name: bubble-rise-after;
+  background-image: radial-gradient(25% 10% at 50% 5%, hsl(0, 0%, 100%) 48%, hsla(0, 0%, 100%, 0) 50%);
+  width: 87.5%;
+  height: 87.5%;
+  transform: translate(-50%, -50%) translate(0, 4.5em) rotate(-45deg) scale(0);
+}
+
+.pl__bubble:before,
+.pl__bubble-drop:before {
+  width: 100%;
+  height: 100%;
+}
+
+.pl__bubble-drop:before {
+  animation-name: bubble-drop;
+  background-color: hsl(223, 90%, 80%);
+  border-radius: 0.0625em;
+  transform: translateY(0) scaleY(0);
+  transform-origin: 50% 0;
+}
+
+.pl__bubble:before,
+.pl__bubble:after,
+.pl__bubble-drop:before {
+  content: "";
   display: block;
-  float: left;
-  width: 16px;
-  height: 16px;
-  margin-left: 16px;
-  background: #0848a1;
-  border-radius: 50%;
 }
 
-@keyframes dot {
-  50% {
-    transform: translateX(96px);
+.pl__bubble:nth-child(2):before,
+.pl__bubble:nth-child(2):after,
+.pl__bubble:nth-child(2) .pl__bubble-drop:before {
+  animation-delay: 0.15s;
+}
+
+.pl__bubble:nth-child(3):before,
+.pl__bubble:nth-child(3):after,
+.pl__bubble:nth-child(3) .pl__bubble-drop:before {
+  animation-delay: 0.3s;
+}
+
+/* Animations */
+@keyframes bubble-rise-before {
+  from {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    transform: translate(0, 4.5em) scale(0);
+  }
+  30% {
+    animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+    transform: translate(0, 0.75em) scale(1);
+  }
+  60% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    opacity: 1;
+    transform: translate(0, -3em) scale(1);
+  }
+  70%,
+  to {
+    opacity: 0;
+    transform: translate(0, -3em) scale(0.25);
   }
 }
 
-@keyframes dots {
-  50% {
-    transform: translateX(-31px);
+@keyframes bubble-rise-after {
+  from {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    transform: translate(-50%, -50%) translate(0, 4.5em) rotate(-45deg) scale(0);
+  }
+  30% {
+    animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+    transform: translate(-50%, -50%) translate(0, 0.75em) rotate(-45deg) scale(1);
+  }
+  60% {
+    animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(0, -3em) rotate(-45deg) scale(1);
+  }
+  70%,
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, -3em) rotate(-45deg) scale(0.25);
   }
 }
+
+@keyframes bubble-drop {
+  from {
+    animation-timing-function: steps(1, end);
+    visibility: hidden;
+    transform: translateY(0) scaleY(1);
+  }
+  65% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    visibility: visible;
+    transform: translateY(0) scaleY(1);
+  }
+  80%,
+  to {
+    transform: translateY(400%) scaleY(0);
+  }
+}
+
+
 
 /* ---------------------------------------------
 Header Style
@@ -811,13 +936,45 @@ Banner Style
   height: 120px;
   position: absolute;
   bottom: -50px;
-  left: 50%;
+ 
   background: url(/assets/images/drop.svg) no-repeat;
   background-size: contain;
   background-position: center center;
   z-index: 5;
   transform: translateX(-50%);
+  animation: drop-fall 2s ease-in-out infinite; /* Ajout de l'animation */
 }
+
+@media (min-width: 1001px) {
+  .bannerContainer:before {
+    left: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .bannerContainer:before {
+    bottom: -16%;
+  }
+}
+
+@keyframes drop-fall {
+  0% {
+    transform: translateY(-50px) scale(1); /* Position légèrement au-dessus */
+  }
+  70% {
+    transform: translateY(0px) scale(0.9); /* Chute douce */
+  }
+  80% {
+    transform: translateY(10px) scale(1.1, 0.9); /* Légère écrasement */
+  }
+  90% {
+    transform: translateY(10px) scale(1, 1.2); /* Expansion subtile */
+  }
+  100% {
+    transform: translateY(0px) scale(1); /* Retour à la forme normale */
+  }
+}
+
 .bannerText {
   display: flex;
   flex-direction: column;
@@ -1247,14 +1404,17 @@ Secteur d'activité Style
   height: 300px;
   background: fixed;
   position: relative; 
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #FFF;
   text-align: center;
   padding: 20px;
-  overflow: hidden; 
+  overflow: hidden;
   border: #FFF;
+  transition: all 0.3s ease;
+  transform: scale(0.95);  /* Réduction initiale */
+  z-index: 1;
 }
 
 .activiteContainer::before {
@@ -1262,26 +1422,36 @@ Secteur d'activité Style
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
   z-index: 1;
+  transition: all 0.5s ease;
 }
+
+
 .activiteContainer::after {
   content: '';
   position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  border: 2px solid #FFF;
-  z-index: 1;
-  transition: all 0.3s ease;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Ligne lumineuse */
+  z-index: 2;
+  transition: none;
 }
 
 .activiteContainer:hover::after {
-  background: rgba(0, 0, 0, 0.3);
+  left: 100%;
+  transition: all 0.7s ease; /* Animation de gauche à droite */
 }
+
+.activiteContainer:hover {
+  transform: scale(1.05);  /* Zoom sur le hover */
+  transition: transform 0.3s ease, all 0.3s ease;  /* Transition douce pour le zoom */
+  z-index: 2;
+}
+
 
 .activiteContainer p {
   position: relative;
@@ -1705,11 +1875,17 @@ Contact Style
   border-radius: 8px;
   color: #fff;
   text-decoration: none;
-  transition: background-color 0.3s ease;
   width: 30%; /* Smaller width */
   max-width: 250px;
   min-width: 200px;
   overflow: hidden;
+  transition: all 0.3s ease;  /* Transition pour le hover */
+  transform: scale(0.95);  /* Réduction initiale */
+}
+
+.contact-card:hover {
+  transform: scale(1.05);  /* Zoom sur le hover */
+  transition: transform 0.3s ease;  /* Transition douce pour le zoom */
 }
 
 .contact-card i {
