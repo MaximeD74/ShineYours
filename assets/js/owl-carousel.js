@@ -3502,7 +3502,7 @@ $(document).ready(function(){
 	const clickY = event.clientY;
   
 	// Définit les coordonnées de la goutte basée sur la position et la taille du pseudo-élément
-	const dropWidth = 86; // largeur de la goutte
+	const dropWidth = 300; // largeur de la goutte
 	const dropHeight = 200; // hauteur de la goutte
 	const dropBottomOffset = 50; // décalage vers le bas
 	const dropLeftOffset = bannerRect.left + (bannerRect.width / 2) - (dropWidth / 2); // position centrée
@@ -3532,9 +3532,6 @@ $(document).ready(function(){
 	  });
 	}
   });
-  
-  
-  
 
  
   document.addEventListener("DOMContentLoaded", function() {
@@ -3552,3 +3549,42 @@ $(document).ready(function(){
   });
 
 
+  function expandCard(cardId) {
+    // Sélectionne la carte par son ID
+    const card = document.getElementById(cardId);
+    const button = card.querySelector('.btnDiscover'); // Récupère le bouton "En savoir plus"
+    const description = card.querySelector('.description'); // Récupère la description
+
+    // Ajoute ou enlève la classe 'expanded'
+    card.classList.toggle('expanded');
+
+    // Change le texte du bouton
+    if (card.classList.contains('expanded')) {
+        button.textContent = "Fermer"; // Change le texte en "Fermer"
+        description.style.display = 'flex'; // Affiche la description après un léger délai pour permettre la transition
+        setTimeout(() => {
+            description.style.maxHeight = description.scrollHeight + "px"; // Permet à la description de s'ouvrir avec une hauteur dynamique
+        }, 0);
+    } else {
+        button.textContent = "En savoir plus"; // Rétablit le texte en "En savoir plus"
+        description.style.maxHeight = '0'; // Réinitialise la hauteur à 0 pour la fermeture
+        setTimeout(() => {
+            description.style.display = 'none'; // Masque la description après que la transition soit terminée
+        }, 500); // Correspond à la durée de la transition
+    }
+
+    // Optionnel : Masque les autres cartes lorsque l'une d'elles est agrandie
+    const allCards = document.querySelectorAll('.service-card');
+    allCards.forEach((c) => {
+        if (c !== card) {
+            c.classList.remove('expanded');
+            c.querySelector('.btnDiscover').textContent = "En savoir plus"; // Réinitialise le texte des autres cartes
+            c.querySelector('.description').style.maxHeight = '0'; // Masque la description des autres cartes
+            setTimeout(() => {
+                c.querySelector('.description').style.display = 'none'; // Masque la description après que la transition soit terminée
+            }, 500); // Correspond à la durée de la transition
+        }
+    });
+}
+
+  

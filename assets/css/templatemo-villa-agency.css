@@ -9,6 +9,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   padding: 0;
   border: 0;
   outline: 0;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -1101,10 +1102,20 @@ Who are we Style
   margin-bottom: 20px;
 }
 
+
+.photoWilliamFrancesco {
+  width: 50%;
+}
+
+
 .icon-box {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+}
+
+.icon-box i {
+  margin-left: 20px;
 }
 
 .icon-box img {
@@ -1494,6 +1505,11 @@ Secteur d'activité Style
   background-size:cover; 
   background-position: center;
 }
+.activiteContainerRemiseApp {
+  background: url(/assets/images/logos/Photos/remiseApp.jpg);
+  background-size:cover; 
+  background-position: center;
+}
 .activiteContainerCanape {
   background: url(/assets/images/logos/Photos/Canape.jpg);
   background-size:cover; 
@@ -1757,6 +1773,119 @@ Secteur d'activité Style
       margin-bottom: 20px; /* Espace entre les images */
   }
 }
+
+.service-details {
+  padding: 50px 30px;
+  text-align: center; /* Centrer le texte */
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.description-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.service-card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permet de mettre les cartes sur plusieurs lignes */
+  justify-content: center; /* Centre les cartes */
+  gap: 20px; /* Espace entre les cartes */
+  margin-top: -100px;
+}
+
+.service-card {
+  width: 35%; /* Ajustez la largeur pour que deux cartes tiennent sur une ligne */
+  margin: 20px; /* Espacement autour des cartes */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  transition: margin 1s ease, width 1s ease, height 1s ease; 
+}
+
+
+
+.service-card img {
+  width: 100%;
+  height: 300px; /* Augmentez la hauteur pour faire les cartes plus grandes */
+  object-fit: cover;/* Rendre l'image responsive */
+}
+
+.service-card h4 {
+  margin-top: 15px;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.service-card p {
+  padding: 0 15px 15px; /* Espacement autour du texte */
+}
+
+
+@media (max-width: 1000px) {
+  .service-card {
+    width: 100%; /* Les cartes prendront toute la largeur */
+    margin: 10px 0; /* Ajustez le margin pour un meilleur espacement */
+  }
+
+  .service-card img {
+    height: 200px; /* Ajustez la hauteur si nécessaire pour les petits écrans */
+  }
+}
+
+.service-card .btnDiscover {
+  margin: 15px;
+}
+
+.service-card.expanded {
+  width: 100%; /* Prendre toute la largeur sur les grands écrans */
+  height: auto; /* Laisser l'extension vers le bas */
+  transition: width 1s ease, height 1s ease-in-out; /* Transition douce */
+  margin: 20px 0; /* Réduisez le margin pour centrer la carte */
+}
+
+.service-card.expanded .description {
+  display: flex; /* Afficher la description */
+}
+.service-card .description {
+  color: white; /* Met le texte en blanc */
+  margin: 10px 0; /* Ajoute un espacement au-dessus et en dessous */
+  opacity: 0; /* Cache la description par défaut */
+  transition: opacity 0.5s ease, max-height 0.5s ease; /* Ajout de la transition pour l'opacité et max-height */
+  max-height: 0; /* Initialement, la hauteur est 0 pour cacher le contenu */
+  overflow: hidden; /* Cache le contenu débordant */
+}
+
+.service-card.expanded .description {
+  opacity: 1; /* Affiche la description lors de l'agrandissement */
+  max-height: 200px; /* Ajustez cette valeur en fonction de la taille de votre description */
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10%;
+}
+
+.service-card.expanded .description ol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.btnDiscoverServicePage {
+  margin-bottom: 80px;
+  margin-top: 0;
+}
+
+.btnDiscoverNoMarginTop {
+  margin-top: 0;
+}
+
+
+
 
 
 /* 
@@ -2095,7 +2224,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .footer-content {
     flex-direction: column;
     align-items: center;
