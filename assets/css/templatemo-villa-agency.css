@@ -1404,6 +1404,10 @@ Secteur d'activité Style
   color: #FFF;
 }
 
+#particular-services, #professional-services {
+  padding-top: 100px ;
+}
+
 .activiteContainer {
   display: flex;
   flex-direction: column;
@@ -1858,6 +1862,7 @@ Secteur d'activité Style
   transition: opacity 0.5s ease, max-height 0.5s ease; /* Ajout de la transition pour l'opacité et max-height */
   max-height: 0; /* Initialement, la hauteur est 0 pour cacher le contenu */
   overflow: hidden; /* Cache le contenu débordant */
+  transition: max-height 0.5s ease-in-out;
 }
 
 .service-card.expanded .description {

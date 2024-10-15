@@ -3568,6 +3568,8 @@ $(document).ready(function(){
     } else {
         button.textContent = "En savoir plus"; // Rétablit le texte en "En savoir plus"
         description.style.maxHeight = '0'; // Réinitialise la hauteur à 0 pour la fermeture
+        const cardPosition = card.getBoundingClientRect().top + window.scrollY; // Position de la carte
+        window.scrollTo({ top: cardPosition - 50, behavior: 'smooth' }); // Défilement vers 50 pixels au-dessus de la carte
         setTimeout(() => {
             description.style.display = 'none'; // Masque la description après que la transition soit terminée
         }, 500); // Correspond à la durée de la transition
@@ -3586,5 +3588,8 @@ $(document).ready(function(){
         }
     });
 }
+
+
+
 
   
