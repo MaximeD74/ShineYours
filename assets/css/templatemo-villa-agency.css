@@ -1642,6 +1642,9 @@ Secteur d'activité Style
   font-size: 36px;
   margin-bottom: 30px;
 }
+.respectEnvironnement h3 {
+  color: #2C6B2F;
+}
 
 /* Eco Cards */
 .eco-content {
@@ -1669,13 +1672,13 @@ Secteur d'activité Style
 
 .eco-card i {
   font-size: 40px;
-  color: var(--primary-color);
+  color: #2C6B2F;
   margin-bottom: 15px;
 }
 
 .eco-card h4 {
   font-size: 22px;
-  color: #0078b6;
+  color: #2C6B2F;
   margin-bottom: 15px;
 }
 
@@ -1711,13 +1714,14 @@ Secteur d'activité Style
 
 .large-content i {
   font-size: 50px;
-  color: var(--primary-color);
+  color: #2C6B2F;
   margin-bottom: 15px;
 }
 
 .large-content h4 {
   font-size: 20px;
   margin-bottom: 10px;
+  color: #2C6B2F;
 }
 
 .large-content p {
