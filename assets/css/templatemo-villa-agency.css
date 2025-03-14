@@ -1500,6 +1500,7 @@ Secteur d'activité Style
 .activiteContainer p {
   position: relative;
   z-index: 2;
+  
 }
 
 
@@ -1609,9 +1610,10 @@ Secteur d'activité Style
 }
 
 .activiteContainer p {
-  font-size: 1.5em;
+  font-size: 1em;
   color: #FFF;
   margin-top: 235px;
+  background-color: black;
 }
 
 .servicesParticuliers {
