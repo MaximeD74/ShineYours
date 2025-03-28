@@ -2961,19 +2961,15 @@
 	 * @todo Rename `slideBy` to `navBy`
 	 */
 	Navigation.Defaults = {
-		nav: false,
+		nav: true,
 		navText: [
-			'<span aria-label="' + 'Previous' + '">&#x2039;</span>',
-			'<span aria-label="' + 'Next' + '">&#x203a;</span>'
+			'<button type="button" aria-label="Précédent" class="owl-prev">&#x2039;</button>',
+			'<button type="button" aria-label="Suivant" class="owl-next">&#x203a;</button>'
 		],
-		navSpeed: false,
-		navElement: 'button type="button" role="presentation"',
+		navElement: 'button',
 		navContainer: false,
 		navContainerClass: 'owl-nav',
-		navClass: [
-			'owl-prev',
-			'owl-next'
-		],
+		navClass: ['owl-prev', 'owl-next'],
 		slideBy: 1,
 		dotClass: 'owl-dot',
 		dotsClass: 'owl-dots',
@@ -2983,7 +2979,43 @@
 		dotsSpeed: false,
 		dotsContainer: false
 	};
-
+	$(document).ready(function () {
+		// Retirer les rôles ARIA des boutons owl-prev et owl-next tout en gardant les labels accessibles
+		$('.owl-prev, .owl-next').removeAttr('role')
+			.attr('aria-label', function() {
+				// Définir un aria-label spécifique pour chaque bouton
+				return $(this).hasClass('owl-prev') ? 'Précédent' : 'Suivant';
+			});
+	
+		// Mettre à jour les labels ARIA pour les dots (si nécessaire)
+		function updateAriaLabels() {
+			$('.owl-carousel').each(function (carouselIndex, carousel) {
+				$(carousel).find('.owl-dot').each(function (dotIndex) {
+					$(this).attr('role', 'button') // S'assurer que les dots ont bien un rôle de "button"
+						.attr('aria-label', 'Diapositive ' + (dotIndex + 1))
+						.attr('tabindex', '0');
+				});
+			});
+		}
+	
+		// Appliquer immédiatement si les dots existent déjà
+		updateAriaLabels();
+	
+		// Observer les modifications du DOM
+		const observer = new MutationObserver(function () {
+			updateAriaLabels();
+		});
+	
+		$('.owl-carousel').each(function (_, carousel) {
+			observer.observe(carousel, { childList: true, subtree: true });
+		});
+	
+		// Pour les dots, s'assurer qu'ils ont bien un rôle de navigation
+		$('.owl-dots').attr('role', 'navigation');
+	});
+	
+	
+	
 	/**
 	 * Initializes the layout of the plugin and extends the carousel.
 	 * @protected

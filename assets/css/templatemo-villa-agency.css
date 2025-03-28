@@ -13,13 +13,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 :root {
-  --primary-color: #487faf;
-  --secondary-color: #62add8;
+  --primary-color: #366a99;
+  --secondary-color: #358EC2; /* Ajusté pour meilleur contraste */
   --accent-color: #1f3753;
-  --light-color: #76d0f5;
+  --light-color: #2F91D2; /* Ajusté pour meilleur contraste */
   --dark-color: #252e3b;
   --hue: 223;
-	--trans-dur: 0.3s;
+  --trans-dur: 0.3s;
 }
 
 .clearfix:after {
@@ -639,7 +639,7 @@ Header Style
   height: 40px;
   line-height: 40px;
   text-transform: capitalize;
-  color: #1e1e1e;
+  color: black;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
@@ -683,7 +683,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li a.active {
-  color: var(--secondary-color);
+  color: var(black);
 }
 
 
@@ -1120,7 +1120,7 @@ Who are we Style
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #FFF;
+  color: #EAEAEA;
 }
 
 .whoAreWeDescriptionRowText p {
@@ -1505,57 +1505,57 @@ Secteur d'activité Style
 
 
 .activiteContainerBureau {
-  background: url(/assets/images/logos/Photos/bureau.jpg);
+  background: url(/assets/images/logos/Photos/bureau.webp);
   background-size:cover;
   background-position: center;
 }
 .activiteContainerimmeuble {
-  background: url(/assets/images/logos/Photos/immeuble.jpg);
+  background: url(/assets/images/logos/Photos/immeuble.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerRestaurant {
-  background: url(/assets/images/logos/Photos/restaurant.jpg);
+  background: url(/assets/images/logos/Photos/restaurant.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerGym {
-  background: url(/assets/images/logos/Photos/gym.jpg);
+  background: url(/assets/images/logos/Photos/gym.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerChantier {
-  background: url(/assets/images/logos/Photos/chantier.jpg);
+  background: url(/assets/images/logos/Photos/chantier.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerEncombrants {
-  background: url(/assets/images/logos/Photos/encombrants.jpg);
+  background: url(/assets/images/logos/Photos/encombrants.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerVoiture {
-  background: url(/assets/images/logos/Photos/Voiture.jpg);
+  background: url(/assets/images/logos/Photos/Voiture.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerRemiseApp {
-  background: url(/assets/images/logos/Photos/remiseApp.jpg);
+  background: url(/assets/images/logos/Photos/remiseApp.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerCanape {
-  background: url(/assets/images/logos/Photos/Canape.jpg);
+  background: url(/assets/images/logos/Photos/Canape.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerMatelas {
-  background: url(/assets/images/logos/Photos/Matelas.jpg);
+  background: url(/assets/images/logos/Photos/Matelas.webp);
   background-size:cover; 
   background-position: center;
 }
 .activiteContainerTapis {
-  background: url(/assets/images/logos/Photos/tapis.jpg);
+  background: url(/assets/images/logos/Photos/tapis.webp);
   background-size:cover; 
   background-position: center;
 }
@@ -1592,15 +1592,18 @@ Secteur d'activité Style
 }
 
 .owl-dot {
-  width: 12px;
-  height: 12px;
-  background-color: #bbb !important;
-  border-radius: 50%;
-  margin: 5px;
+  width: 48px; /* Largeur minimale recommandée */
+  height: 48px; /* Hauteur minimale recommandée */
+  margin: 8px; /* Espacement entre les dots */
+  border-radius: 50%; /* Pour un style rond */
+  background-color: #ccc; /* Couleur par défaut */
+  cursor: pointer;
+  display: inline-block;
+  
 }
 
 .owl-dot.active {
-  background-color: var(--light-color) !important;
+  background-color: #333; /* Couleur pour l'état actif */
 }
 
 .activiteContainer img {
@@ -2199,6 +2202,7 @@ footer {
   font-size: 1.3em;
   margin-bottom: 20px;
   text-transform: uppercase;
+  color: var(--light-color);
 }
 
 .footer-section p {
