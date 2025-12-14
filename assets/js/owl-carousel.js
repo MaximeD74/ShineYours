@@ -2973,7 +2973,7 @@
 		slideBy: 1,
 		dotClass: 'owl-dot',
 		dotsClass: 'owl-dots',
-		dots: true,
+		dots: false,
 		dotsEach: false,
 		dotsData: false,
 		dotsSpeed: false,
@@ -3486,7 +3486,7 @@ $(document).ready(function(){
 		loop: true,       // Permet de faire défiler en boucle
 		margin: 10,       // Espace entre les items
 		nav: true,       // Désactive les boutons "précédent" et "suivant"
-		dots: true,       // Active les dots
+		dots: false,       // Active les dots
 		autoplay: true,   // Active le défilement automatique
 		autoplayTimeout: 5000, // Temps entre chaque slide
 		autoplayHoverPause: true,

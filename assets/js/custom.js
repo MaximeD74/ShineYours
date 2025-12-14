@@ -10,24 +10,14 @@
     });
 
 
-	$(window).scroll(function() {
-	  var scroll = $(window).scrollTop();
-	  var box = $('.header-text').height();
-	  var header = $('header').height();
-
-	  if (scroll >= box - header) {
-	    $("header").addClass("background-header");
-	  } else {
-	    $("header").removeClass("background-header");
-	  }
-	})
+	
 
 	$('.owl-banner').owlCarousel({
 	  center: true,
       items:1,
       loop:true,
       nav: true,
-	  dots:true,
+	  dots:false,
 	  navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
       margin:30,
       responsive:{
