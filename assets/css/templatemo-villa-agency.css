@@ -398,11 +398,39 @@ FAQ Style
   opacity: 0.8;
   transition: opacity 0.8s ease-out, visibility 0s 0.8s; /* Durée de l'animation et délai pour visibility */
 }
+
+/* Classe ajoutée pour déclencher l'animation de disparition */
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden; /* visibility passe à "hidden" après la transition d'opacité */
+  transition: all 2s;
+}
+
+#preloader {
+  width: 12em;
+  height: 12em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.pl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  filter: drop-shadow(0.9em 0.9em 4px hsla(0, 0%, 0%, 0.4));
+  margin: auto;
+  width: 12em;
+  height: 12em;
+}
+
 .pl__bubble {
   position: relative;
   width: 3em;
   height: 3em;
 }
+
 .pl__bubble-drop {
   width: 0.125em;
   height: 0.5em;
@@ -410,25 +438,37 @@ FAQ Style
   position: absolute;
   transform-origin: 50% 0;
 }
+
+.pl__bubble:before,
+.pl__bubble:after,
 .pl__bubble-drop {
   position: absolute;
 }
+
+.pl__bubble:before,
+.pl__bubble:after,
 .pl__bubble-drop:before {
   animation: bubble-rise-before 0.9s linear infinite;
 }
+
+.pl__bubble:before,
 .pl__bubble:after {
   border-radius: 50%;
 }
+
+.pl__bubble:after,
 .pl__bubble-drop {
   top: 50%;
   left: 50%;
 }
+
 .pl__bubble:before {
   box-shadow: 0 -0.0625em 0 0.0625em hsl(223, 90%, 90%) inset, 
               0 0 0 0.0625em hsl(223, 90%, 70%) inset, 
               0 0 0.25em 0.25em hsla(223, 90%, 70%, 0.7) inset;
   transform: translate(0, 4.5em) scale(0);
 }
+
 .pl__bubble:after {
   animation-name: bubble-rise-after;
   background-image: radial-gradient(25% 10% at 50% 5%, hsl(0, 0%, 100%) 48%, hsla(0, 0%, 100%, 0) 50%);
@@ -436,10 +476,13 @@ FAQ Style
   height: 87.5%;
   transform: translate(-50%, -50%) translate(0, 4.5em) rotate(-45deg) scale(0);
 }
+
+.pl__bubble:before,
 .pl__bubble-drop:before {
   width: 100%;
   height: 100%;
 }
+
 .pl__bubble-drop:before {
   animation-name: bubble-drop;
   background-color: hsl(223, 90%, 80%);
@@ -447,16 +490,26 @@ FAQ Style
   transform: translateY(0) scaleY(0);
   transform-origin: 50% 0;
 }
+
+.pl__bubble:before,
+.pl__bubble:after,
 .pl__bubble-drop:before {
   content: "";
   display: block;
 }
+
+.pl__bubble:nth-child(2):before,
+.pl__bubble:nth-child(2):after,
 .pl__bubble:nth-child(2) .pl__bubble-drop:before {
   animation-delay: 0.1s;
 }
+
+.pl__bubble:nth-child(3):before,
+.pl__bubble:nth-child(3):after,
 .pl__bubble:nth-child(3) .pl__bubble-drop:before {
   animation-delay: 0.2s;
 }
+
 /* Animations */
 @keyframes bubble-rise-before {
   from {
@@ -478,6 +531,7 @@ FAQ Style
     transform: translate(0, -3em) scale(0.25);
   }
 }
+
 @keyframes bubble-rise-after {
   from {
     animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
@@ -498,6 +552,7 @@ FAQ Style
     transform: translate(-50%, -50%) translate(0, -3em) rotate(-45deg) scale(0.25);
   }
 }
+
 @keyframes bubble-drop {
   from {
     animation-timing-function: steps(1, end);
@@ -514,6 +569,7 @@ FAQ Style
     transform: translateY(400%) scaleY(0);
   }
 }
+
 
 /* ═══════════════════════════════════════════════════════════════════════════
    9. BOUTON WHATSAPP
