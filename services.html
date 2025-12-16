@@ -762,16 +762,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script>
     window.addEventListener('load', function() {
-      const preloader = document.querySelector('.preloader');
+  const preloader = document.querySelector('.preloader');
+  
+  if (preloader) {
+    // Attendre un peu avant de commencer à disparaître
+    setTimeout(function() {
+      preloader.classList.add('fade-out');
       
-      if (preloader) {
-        preloader.classList.add('fade-out');
-        
-        setTimeout(function() {
-          preloader.style.display = 'none';
-        }, 1500); // Correspond à la durée de la transition
-      }
-    });
+      setTimeout(function() {
+        preloader.style.display = 'none';
+      }, 800); // Correspond à la nouvelle durée de transition
+    }, 600); // Affiche les bulles pendant 600ms
+  }
+});
   </script> 
   </body>
 </html>
