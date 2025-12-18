@@ -1,37 +1,93 @@
 <?php
+// Configuration
+$to_email = 'shineyoursservice@gmail.com'; // Email de réception
+$from_name = 'Site Shine Yours';
+
+// Headers
+header('Content-Type: application/json');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-
-    // Destination email address
-    $to = 'info.lightmemory@gmail.com';
-
-    // Email subject and body
-    $email_subject = "Contact Form Submission: $subject";
-    $email_body = "You have received a new message from the contact form on your website.\n\n".
-                  "Here are the details:\n\n".
-                  "Name: $name\n\n".
-                  "Email: $email\n\n".
-                  "Subject: $subject\n\n".
-                  "Message:\n$message";
-
-    // Email headers
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
-
-    // Send the email
-    if (mail($to, $email_subject, $email_body, $headers)) {
-        // Redirect to a thank you page or display a success message
-        echo "Thank you! Your message has been sent.";
-    } else {
-        // Display an error message
-        echo "Sorry, there was an error sending your message. Please try again later.";
+    
+    // Récupération et nettoyage des données
+    $name = htmlspecialchars(trim($_POST['name'] ?? ''));
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $phone = htmlspecialchars(trim($_POST['phone'] ?? 'Non renseigné'));
+    $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
+    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
+    
+    // Validation
+    $errors = [];
+    
+    if (empty($name)) {
+        $errors[] = "Le nom est obligatoire";
     }
+    
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "L'email est invalide";
+    }
+    
+    if (empty($subject)) {
+        $errors[] = "L'objet est obligatoire";
+    }
+    
+    if (empty($message)) {
+        $errors[] = "Le message est obligatoire";
+    }
+    
+    // Si erreurs, retourner
+    if (!empty($errors)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Erreur : ' . implode(', ', $errors)
+        ]);
+        exit;
+    }
+    
+    // Préparation de l'email
+    $email_subject = "Nouvelle demande de devis : $subject";
+    
+    $email_body = "
+    ═══════════════════════════════════════
+    NOUVELLE DEMANDE DE DEVIS
+    ═══════════════════════════════════════
+    
+    Nom/Entreprise : $name
+    Email : $email
+    Téléphone : $phone
+    
+    Service demandé : $subject
+    
+    Message :
+    ─────────────────────────────────────
+    $message
+    ─────────────────────────────────────
+    
+    Date : " . date('d/m/Y H:i') . "
+    ";
+    
+    // Headers de l'email
+    $headers = "From: $from_name <noreply@shineyours.ch>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    
+    // Envoi de l'email
+    if (mail($to_email, $email_subject, $email_body, $headers)) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'Merci ! Votre demande a été envoyée avec succès. Nous vous répondrons dans les plus brefs délais.'
+        ]);
+    } else {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement par téléphone.'
+        ]);
+    }
+    
 } else {
-    // Display an error message if the form is not submitted correctly
-    echo "There was an error with your submission. Please try again.";
+    echo json_encode([
+        'success' => false,
+        'message' => 'Méthode non autorisée'
+    ]);
 }
 ?>

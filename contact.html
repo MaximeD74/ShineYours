@@ -98,97 +98,225 @@
   <a href="tel:+41 78 338 71 63" target="_blank" id="whatsapp-button">
     <img src="./assets/images/whatsappicon.webp" alt="WhatsApp" />
   </a>
-
-  <div class="contactContent contactContent-page section">
-    <div class="section-heading contactContentHeading">
+<div class="contactPageAllPage">
+  <div class="contactContent section">
+  <div class="contact-container">
+    
+    <div class="contact-header">
+      <div class="contact-icon">
+        <i class="fas fa-comments"></i>
+      </div>
       <h3>Contactez-nous</h3>
+      <p class="contact-subtitle">Obtenez votre devis gratuit en quelques minutes</p>
     </div>
-    <p>Besoin d'un nettoyage impeccable pour vos locaux ou votre domicile ? Chez ShineYours, nous sommes à votre service pour vous offrir des prestations sur-mesure adaptées à vos besoins.</p>
-      <p>Et le meilleur dans tout cela ? Nos devis sont 100% gratuits ! Prenez quelques instants pour nous contacter par email ou via le formulaire ci-dessous, et recevez rapidement une offre personnalisée, sans engagement.
-      Ne laissez pas la propreté attendre, faites confiance à une équipe professionnelle qui place votre satisfaction au cœur de ses priorités.</p>
-  
-    <!-- Email Section -->
-    <div class="contact-info">
-      <!-- Email Card -->
-      <a href="mailto:shineyoursservice@gmail.com" class="email-link contact-card">
-        <i class="fas fa-envelope"></i>
-        <h2>shineyoursservice@gmail.com</h2>
-        <span>Email professionnel</span>
-      </a>
-  
-      <!-- Phone Card -->
-      <a href="tel:+33123456789" class="phone-link contact-card">
-        <i class="fas fa-phone-alt"></i>
-        <h2>+41 78 338 71 63</h2>
-        <span>Téléphone</span>
-      </a>
+
+    <div class="contact-description">
+      <p>Besoin d'un nettoyage impeccable pour vos locaux ou votre domicile ? Chez ShineYours, nous sommes à votre service pour vous offrir des <strong>prestations sur-mesure</strong> adaptées à vos besoins.</p>
+      <p>Et le meilleur dans tout cela ? <strong>Nos devis sont 100% gratuits !</strong> Prenez quelques instants pour nous contacter, et recevez rapidement une offre personnalisée, sans engagement.</p>
     </div>
-  
-    <!-- Formulaires Entreprises et Particuliers -->
-    <div class="contact-forms">
+
+    <div class="contact-cards-grid">
       
-      <!-- Formulaire Entreprise -->
-      <div class="contact-form">
-        <h3>ENTREPRISE</h3>
-        <form action="send_email.php" method="post">
-          <div class="form-group">
-            <label for="entreprise">Nom de votre entreprise</label>
-            <input type="text" id="entreprise" name="entreprise" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Adresse mail</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="tel">Numéro de téléphone</label>
-            <input type="tel" id="tel" name="tel" required autocomplete="tel">
-          </div>
-          <div class="form-group">
-            <label for="message">Votre demande</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-          </div>
-          <div class="submit-button">
-            <button type="submit">Envoyer</button>
-          </div>
-        </form>
+      <a href="mailto:shineyoursservice@gmail.com" class="contact-card-modern contact-card-clickable">
+  <div class="contact-card-icon">
+    <i class="fas fa-envelope"></i>
+  </div>
+  <div class="contact-card-content">
+    <h4>Email</h4>
+    <span class="contact-card-email">shineyoursservice@gmail.com</span>
+    <span class="contact-card-label">Réponse sous 24h</span>
+  </div>
+</a>
+
+      <a href="https://wa.me/41783387163" target="_blank" class="contact-card-modern contact-card-clickable">
+  <div class="contact-card-icon">
+    <i class="fas fa-phone-alt"></i>
+  </div>
+  <div class="contact-card-content">
+    <h4>Téléphone</h4>
+    <span class="contact-card-email">+41 78 338 71 63</span>
+    <span class="contact-card-label">Lun-Sam 8h-18h</span>
+  </div>
+</a>
+
+      <div class="contact-card-modern">
+  <div class="contact-card-icon">
+    <i class="fas fa-map-marker-alt"></i>
+  </div>
+  <div class="contact-card-content">
+    <h4>Localisation</h4>
+    <span class="contact-card-email">Région genevoise</span>
+    <span class="contact-card-label">Genève & environs</span>
+  </div>
+</div>
+
+    </div>
+
+    <div class="contact-benefits">
+      <div class="contact-benefit-item">
+        <i class="fas fa-check-circle"></i>
+        <span>Devis gratuit et sans engagement</span>
       </div>
-  
-      <!-- Formulaire Particulier -->
-      <div class="contact-form">
-        <h3>PARTICULIERS</h3>
-        <form action="send_email.php" method="post">
-          <div class="form-group">
-            <label for="name">Votre nom et prénom</label>
-            <input type="text" id="name" name="name" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="email">Adresse mail</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="tel">Numéro de téléphone</label>
-            <input type="tel" id="tel" name="tel" required autocomplete="tel">
-          </div>
-          <div class="form-group">
-            <label for="message">Votre demande</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-          </div>
-          <div class="submit-button">
-            <button type="submit">Envoyer</button>
-          </div>
-        </form>
+      <div class="contact-benefit-item">
+        <i class="fas fa-check-circle"></i>
+        <span>Réponse rapide garantie</span>
       </div>
-  
+      <div class="contact-benefit-item">
+        <i class="fas fa-check-circle"></i>
+        <span>Conseils personnalisés</span>
+      </div>
     </div>
   </div>
+</div>
+
+
+  
+    <!-- Formulaire de contact unique -->
+<div class="contact-form-section">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Demandez votre devis gratuit</h2>
+      <p>Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais</p>
+    </div>
+
+    <form action="send_email.php" method="POST" class="modern-contact-form" id="contactForm">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">
+            
+            <i class="fas fa-user"></i>
+            Nom de votre entreprise ou Nom & Prénom *
+          </label>
+          <select id="subject" name="subject" required>
+            <option value="Professionnel">Entreprise</option>
+            <option value="Particulier">Particulier</option>
+          </select>
+          <br>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Ex: Entreprise SA ou Jean Dupont"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">
+            <i class="fas fa-envelope"></i>
+            Adresse email *
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="votre@email.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">
+            <i class="fas fa-phone"></i>
+            Numéro de téléphone
+          </label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="+41 78 123 45 67"
+            autocomplete="tel"
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="subject">
+            <i class="fas fa-tag"></i>
+            Objet de votre demande *
+          </label>
+          <select id="subject" name="subject" required>
+            <option value="">-- Sélectionnez un service --</option>
+            <option value="Nettoyage de bureaux">Nettoyage de bureaux</option>
+            <option value="Nettoyage d'immeubles">Nettoyage d'immeubles</option>
+            <option value="Nettoyage de restaurants">Nettoyage de restaurants</option>
+            <option value="Nettoyage de salles de sport">Nettoyage de salles de sport</option>
+            <option value="Fins de chantier">Fins de chantier</option>
+            <option value="Enlèvement d'encombrants">Enlèvement d'encombrants</option>
+            <option value="Nettoyage de véhicule">Nettoyage de véhicule</option>
+            <option value="Remise d'appartement">Remise d'appartement</option>
+            <option value="Nettoyage canapé/matelas">Nettoyage canapé/matelas</option>
+            <option value="Autre demande">Autre demande</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="message">
+            <i class="fas fa-comment-dots"></i>
+            Décrivez votre demande *
+          </label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="6" 
+            placeholder="Décrivez-nous votre besoin en détail : surface, fréquence souhaitée, date d'intervention..."
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-notice">
+        <i class="fas fa-info-circle"></i>
+        <span>Les champs marqués d'un astérisque (*) sont obligatoires</span>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i>
+          Envoyer ma demande
+        </button>
+      </div>
+
+      <div id="form-message" class="form-response" style="display: none;"></div>
+    </form>
+  </div>
+
+  <!-- Informations complémentaires -->
+  <div class="contact-info-sidebar">
+    <div class="info-card">
+      <div class="info-card-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h4>Réponse rapide</h4>
+      <p>Nous vous répondons sous 24h maximum, souvent bien plus vite !</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h4>Devis gratuit</h4>
+      <p>Aucun engagement. Nous établissons un devis personnalisé adapté à vos besoins.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h4>Besoin d'aide ?</h4>
+      <p>Appelez-nous directement au <a href="tel:+41783387163">+41 78 338 71 63</a></p>
+    </div>
+  </div>
+</div>
+
+</div>
   <footer>
     <div class="footer-content">
       <div class="footer-section company-info">
@@ -247,5 +375,46 @@
       }
     });
   </script>
+  <script>
+// Gestion de l'envoi du formulaire
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const btn = this.querySelector('.btn-submit');
+  const originalText = btn.innerHTML;
+  const messageDiv = document.getElementById('form-message');
+  
+  // Désactiver le bouton
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+  
+  // Envoi avec Fetch API
+  fetch('send_email.php', {
+    method: 'POST',
+    body: new FormData(this)
+  })
+  .then(response => response.json())
+  .then(data => {
+    messageDiv.style.display = 'block';
+    messageDiv.textContent = data.message;
+    messageDiv.className = 'form-response ' + (data.success ? 'success' : 'error');
+    
+    if (data.success) {
+      this.reset();
+    }
+    
+    // Réactiver le bouton
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  })
+  .catch(error => {
+    messageDiv.style.display = 'block';
+    messageDiv.textContent = 'Erreur réseau. Veuillez réessayer.';
+    messageDiv.className = 'form-response error';
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+  });
+});
+</script>
   </body>
 </html>
