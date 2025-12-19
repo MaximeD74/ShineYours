@@ -384,7 +384,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
   
   // Envoi avec Fetch API
-  fetch('send_email_smtp.php', {
+  fetch('send_email.php', {
   method: 'POST',
   body: new FormData(this)
 })
