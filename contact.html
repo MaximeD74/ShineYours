@@ -178,7 +178,113 @@
       <h2>Demandez votre devis gratuit</h2>
       <p>Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais</p>
     </div>
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/mrezbvqa"
+  method="POST"
+>
+  <div class="form-row">
+        <div class="form-group">
+          <label for="name">
+            
+            <i class="fas fa-user"></i>
+            Nom de votre entreprise ou Nom & Prénom *
+          </label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Ex: Entreprise SA ou Jean Dupont"
+            required
+          >
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">
+            <i class="fas fa-envelope"></i>
+            Adresse email *
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="votre@email.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">
+            <i class="fas fa-phone"></i>
+            Numéro de téléphone
+          </label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="+41 78 123 45 67"
+            autocomplete="tel"
+          >
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="subject">
+            <i class="fas fa-tag"></i>
+            Objet de votre demande *
+          </label>
+          <select id="subject" name="subject" required>
+            <option value="">-- Sélectionnez un service --</option>
+            <option value="Nettoyage de bureaux">Nettoyage de bureaux</option>
+            <option value="Nettoyage d'immeubles">Nettoyage d'immeubles</option>
+            <option value="Nettoyage de restaurants">Nettoyage de restaurants</option>
+            <option value="Nettoyage de salles de sport">Nettoyage de salles de sport</option>
+            <option value="Fins de chantier">Fins de chantier</option>
+            <option value="Enlèvement d'encombrants">Enlèvement d'encombrants</option>
+            <option value="Nettoyage de véhicule">Nettoyage de véhicule</option>
+            <option value="Remise d'appartement">Remise d'appartement</option>
+            <option value="Nettoyage canapé/matelas">Nettoyage canapé/matelas</option>
+            <option value="Autre demande">Autre demande</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="message">
+            <i class="fas fa-comment-dots"></i>
+            Décrivez votre demande *
+          </label>
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="6" 
+            placeholder="Décrivez-nous votre besoin en détail : surface, fréquence souhaitée, date d'intervention..."
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-notice">
+        <i class="fas fa-info-circle"></i>
+        <span>Les champs marqués d'un astérisque (*) sont obligatoires</span>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-paper-plane"></i>
+          Envoyer ma demande
+        </button>
+      </div>
+
+      <div id="form-message" class="form-response" style="display: none;"></div>
+</form>
+
+<!-- 
     <form action="send_email.php" method="POST" class="modern-contact-form" id="contactForm">
       
       <div class="form-row">
@@ -280,7 +386,7 @@
       </div>
 
       <div id="form-message" class="form-response" style="display: none;"></div>
-    </form>
+    </form>-->
   </div>
 
   <!-- Informations complémentaires -->
@@ -370,46 +476,6 @@
       }
     });
   </script>
-  <script>
-// Gestion de l'envoi du formulaire
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
   
-  const btn = this.querySelector('.btn-submit');
-  const originalText = btn.innerHTML;
-  const messageDiv = document.getElementById('form-message');
-  
-  // Désactiver le bouton
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-  
-  // Envoi avec Fetch API
-  fetch('send_email.php', {
-  method: 'POST',
-  body: new FormData(this)
-})
-  .then(response => response.json())
-  .then(data => {
-    messageDiv.style.display = 'block';
-    messageDiv.textContent = data.message;
-    messageDiv.className = 'form-response ' + (data.success ? 'success' : 'error');
-    
-    if (data.success) {
-      this.reset();
-    }
-    
-    // Réactiver le bouton
-    btn.disabled = false;
-    btn.innerHTML = originalText;
-  })
-  .catch(error => {
-    messageDiv.style.display = 'block';
-    messageDiv.textContent = 'Erreur réseau. Veuillez réessayer.';
-    messageDiv.className = 'form-response error';
-    btn.disabled = false;
-    btn.innerHTML = originalText;
-  });
-});
-</script>
   </body>
 </html>
